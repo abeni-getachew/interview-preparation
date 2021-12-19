@@ -1,0 +1,24 @@
+function countSwaps(a) {
+    const n = a.length;
+    let numberOfSwap = 0;
+    for (let i = 0; i < n - 1; i++) {
+        let isSwaped = false;
+        for (let j = 0; j < n - i - 1; j++) {
+            if (a[j] > a[j + 1]) {
+                if (a[j] > a[j + 1]) {
+                    [a[j], a[j + 1], isSwaped] = [a[j + 1], a[j], true];
+                    numberOfSwap++;
+                }
+
+
+            }
+        }
+        if (isSwaped === false) {
+            break;
+
+        }
+    }
+    console.log(`Array is sorted in ${numberOfSwap} swaps.`)
+    console.log(`First Element: ${a[0]}`)
+    console.log(`Last Element: ${a[n - 1]}`)
+}
