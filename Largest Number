@@ -1,0 +1,14 @@
+var largestNumber = function(nums) {
+    nums.sort(compare);
+    if(parseInt(nums) === 0) {
+        return '0';
+    } else{
+        return nums.toString().split(",").join("")
+    }
+};
+
+function compare(a, b) {
+    var ab= a.toString() + b.toString();
+    var ba = b.toString() + a.toString();
+    return ba - ab;
+}
