@@ -1,0 +1,51 @@
+/**
+ * @param {number[][]} points
+ * @param {number} k
+ * @return {number[][]}
+ */
+var kClosest = function(points, k) {
+    points = points.map(point => {
+        return { point, distance: Math.sqrt(Math.pow(point[0], 2) + Math.pow(point[1], 2)) }
+    });
+    
+    partialQuickSort(points, k - 1);
+    
+    return points.map(point => point.point).slice(0, k)
+};
+
+function swap(i, j, points) {
+    const temp = points[i];
+    points[i] = points[j];
+    points[j] = temp;
+}
+
+function partialQuickSort(points, k) {
+    let start = 0;
+    let end = points.length - 1;
+    
+    while (true) {
+        left = start + 1; 
+        right = end
+        const pivot = start;
+        
+        while (left <= right) {
+            const pivotValue = points[pivot];
+            
+            if (points[left].distance > pivotValue.distance && points[right].distance < pivotValue.distance)
+                swap(left, right, points);
+            if (points[left].distance <= pivotValue.distance)
+                left++;
+            if (points[right].distance >= pivotValue.distance)
+                right--;
+        }
+        
+        swap(pivot, right, points);
+        
+        if (right === k)
+            break;
+        else if (right < k)
+            start = right + 1;
+        else
+            end = right - 1;
+    }    
+}
