@@ -1,0 +1,1 @@
+var kthLargestNumber = (nums, k) => nums.map(BigInt).sort((a,b)=>b-a>=0?1:-1)[k-1]+"";
