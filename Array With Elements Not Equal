@@ -1,0 +1,13 @@
+var rearrangeArray = function(nums) {
+  nums.sort((a,b) => a-b);
+  const res=[];
+    let index=0;
+    for(let i=0;i<nums.length;i++){
+        res[index] = nums[i]
+        index+=2
+        if(index>=nums.length){
+            index=1
+        }
+    }
+    return res;
+};
