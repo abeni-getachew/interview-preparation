@@ -1,0 +1,13 @@
+var maxOperations = function(nums, k) {
+    const map = new Map()
+    let count=0;
+    for(let i=0;i<nums.length;i++){
+        if(map.has(k-nums[i])&&map.get(k-nums[i])>0){
+            count++
+            map.set(k-nums[i],map.get(k-nums[i])-1)
+        }else{
+            map.set(nums[i],map.get(nums[i])+1||1)
+        }
+    }
+    return count
+};
