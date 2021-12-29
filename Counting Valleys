@@ -1,0 +1,21 @@
+function countingValleys(steps, path) {
+    // Write your code here
+    let counter = 0
+    let valleyCount = 0
+
+    for(let i=0;i<=steps;i++){
+        
+        //If goes uphill decrement by 1,if goes downhill increment by 1
+        if(path[i] == 'D')
+            counter++;
+        else
+            counter--;
+        
+        //If U is 0,increment valley counter
+        if(path[i] =='U' && counter == 0){
+            valleyCount++;
+        }
+    }
+    
+    return valleyCount;
+}
