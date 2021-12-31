@@ -1,0 +1,43 @@
+var pancakeSort = function(arr) {
+    let result = [];
+    for(let i = arr.length - 1; i >= 1; i--){
+        /*Correct order of pancake
+            [1,2,3,4]
+         i = 0 1 2 3  
+           => arr[i] == i + 1
+           If it is not equal then,
+        */
+        if(arr[i] !== i + 1){
+            let currPancakeIndex = -1;
+            for(let j = i - 1; j >= 0; j--){
+                //find the index where pancake i + 1 is at.
+                if(arr[j] == i + 1){
+                    currPancakeIndex = j;
+                    break;
+                }
+            }
+            /*Reverse the pancake between 0 and where the i + 1 -> currPancakeIndex  
+            pancake is found to bring it to top*/
+            pancakeFlip(0, currPancakeIndex);
+            /*Reverse the pancake between 0 and i 
+            to bring it to ith position*/
+            pancakeFlip(0, i);
+            result.push(currPancakeIndex + 1);
+            result.push(i + 1);
+        }
+    }
+    
+    function pancakeFlip(start, end){
+        let startI = start;
+        let endI = end;
+        while(startI < endI){
+            let temp = arr[startI];
+            arr[startI] = arr[endI];
+            arr[endI] = temp;
+            startI++;
+            endI--;
+        }
+       
+    }
+    return result;
+};
