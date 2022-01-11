@@ -1,0 +1,98 @@
+class MyCircularDeque {
+    constructor(k) {
+        this.capacity = k;
+        this.deque = new Array(this.capacity).fill(-1);
+        this.size = 0;
+        this.front = 0;
+        this.back = 0;
+    }
+
+    insertFront(value) {
+        if (this.isFull()) return false;
+
+        if (this.isEmpty()) {
+            this.deque[this.front] = value;
+        }
+        else {
+            this.front = (this.front - 1 + this.capacity) % this.capacity;
+            this.deque[this.front] = value;
+        }
+
+        this.size++;
+
+        return true;
+    }
+
+    insertLast(value) {
+        if (this.isFull()) return false;
+
+        if (this.isEmpty()) {
+            this.deque[this.back] = value;
+        }
+        else {
+            this.back = (this.back + 1) % this.capacity;
+            this.deque[this.back] = value;
+        }
+
+        this.size++;
+
+        return true;
+    }
+
+    deleteFront() {
+        if (this.isEmpty()) return false;
+
+        if (this.size > 1) {
+            this.front = (this.front + 1) % this.capacity;
+        }
+
+        this.size--;
+
+        return true;
+    }
+    
+    deleteLast() {
+        if (this.isEmpty()) return false;
+
+        if (this.size > 1) {
+            this.back = (this.back - 1 + this.capacity) % this.capacity;
+        }
+
+        this.size--;
+
+        return true;
+    }
+    
+    getFront() {
+        if (this.isEmpty()) return -1;
+
+        return this.deque[this.front];
+    }
+    
+    getRear() {
+        if (this.isEmpty()) return -1;
+
+        return this.deque[this.back];
+    }
+    
+    isEmpty() {
+        return this.size === 0;
+    }
+    
+    isFull() {
+        return this.size === this.capacity;
+    }
+}
+
+/** 
+ * Your MyCircularDeque object will be instantiated and called as such:
+ * var obj = new MyCircularDeque(k)
+ * var param_1 = obj.insertFront(value)
+ * var param_2 = obj.insertLast(value)
+ * var param_3 = obj.deleteFront()
+ * var param_4 = obj.deleteLast()
+ * var param_5 = obj.getFront()
+ * var param_6 = obj.getRear()
+ * var param_7 = obj.isEmpty()
+ * var param_8 = obj.isFull()
+ */
