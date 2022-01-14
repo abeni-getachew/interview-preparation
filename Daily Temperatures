@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} temperatures
+ * @return {number[]}
+ */
+var dailyTemperatures = function(temperatures) {
+    const minPQ = new MinPriorityQueue({
+        compare: (a, b) => a.temp > b.temp
+            ? 1
+            : -1
+    });
+
+    const result = new Array(temperatures.length).fill(0);
+
+    temperatures.forEach((currTemp, currDay) => {
+        while(minPQ.front() && currTemp > minPQ.front().temp) {
+            const { day } = minPQ.dequeue();
+            result[day] = currDay - day;
+        }
+
+        minPQ.enqueue({ temp: currTemp, day: currDay });
+    });
+
+    return result;
+};
