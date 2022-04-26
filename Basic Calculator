@@ -1,0 +1,47 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var calculate = function(s) {
+    let number = 0;
+    let stack = [];
+    let lastOperator = '';
+    for(let i=0; i<s.length; i++) {
+        if(s[i] === ' ') {
+            continue;
+        }
+        if(!isNaN(s[i])) {
+            number = number * 10 + Number(s[i]);
+            if(!isNaN(s[i+1]) && s[i+1] !== ' ') {
+                continue;
+            }
+            switch(lastOperator) {
+                 case '+':
+                    stack.push(number);
+                    break;
+                case '-':
+                    stack.push(Number(-number));
+                    break;
+                case '*':
+                    let top = stack.pop();
+                    stack.push(number*top);
+                    break;
+                case '/':
+                    let top1 = stack.pop();
+                    if (top1 < 0) {
+                        stack.push(Math.ceil(top1/number));   
+                    } else {
+                        stack.push(Math.floor(top1/number));
+                    }
+                    break;
+                default:
+                    stack.push(number);
+                    break;
+            }
+        } else {
+            lastOperator = s[i];
+            number = 0;
+        }
+    }
+    return stack.reduce((curr, acc) => curr+acc);
+};
