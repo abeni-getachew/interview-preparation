@@ -1,0 +1,14 @@
+var minIncrementForUnique = function(A) {
+    A.sort((a,b) => a-b);
+    let moves = 0;
+    for (let i = 1; i < A.length; i++) {
+        if (A[i-1] >= A[i]) {
+            let increment = A[i-1] - A[i] + 1;
+            A[i] += increment;
+            moves += increment;
+        }
+    }
+    return moves;
+    // Time Complexity: O(nlog(n))
+    // Space Complexity: O(1)
+};
