@@ -1,0 +1,24 @@
+var decodeString = function(s) {
+    let stack = [];
+    let mul = [];
+    let sol = '';
+    let temp = '';
+    
+    for(let char of s) {
+        if(!isNaN(char)) {
+            temp = `${temp}${char}` // 2
+            
+        }else if(char ==='[') {
+            mul.push(temp)  //2
+            temp = '';
+            stack.push(sol); // aaa
+            sol = ''
+        } else if(char === ']'){
+             sol = stack.pop() + sol.repeat(mul.pop()) // aaabcbc
+            
+        } else {
+            sol += char // bc
+        }
+    }
+    return sol
+};
