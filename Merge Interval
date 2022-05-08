@@ -1,3 +1,4 @@
+
 /**
  * @param {number[][]} intervals
  * @return {number[][]}
@@ -14,3 +15,5 @@ var merge = (intervals) => {
       ans.push([start, end]);
     }
   }
+    return ans
+}
