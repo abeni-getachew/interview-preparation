@@ -1,0 +1,13 @@
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {number}
+ */
+var findTheWinner = function(n, k) {
+    let res = 0;
+    for(let g =1; g<=n; g++){
+        res =  (res+k)%g // 0,
+        console.log(res)
+    }
+    return res+1;
+};
