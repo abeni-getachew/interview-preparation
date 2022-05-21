@@ -1,0 +1,11 @@
+/**
+ * @param {number} n
+ * @param {number} k
+ * @return {character}
+ */
+var findKthBit = function(n, k) {
+    if (k === 1 || k > 2**n) {return '0'}
+    if (2*k === 2**n) {return '1'}
+    var reverse = (bit) => {return bit==='0'?'1':'0'} 
+    return 2*k>2**n ? reverse(findKthBit(n-1, 2**n - k)): findKthBit(n-1, k)
+};
