@@ -1,0 +1,124 @@
+var Node = function (val = null, next = null) {
+  this.val = val;
+  this.next = next;
+};
+
+var MyLinkedList = function () {
+  this.head = null;
+};
+
+/**
+ * @param {number} index
+ * @return {number}
+ */
+MyLinkedList.prototype.get = function (index) {
+  let count = 0;
+  let cur = this.head;
+  while (cur !== null) {
+    if (count === index) {
+      return cur.val;
+    }
+    cur = cur.next;
+    count++;
+  }
+  return -1;
+};
+
+/**
+ * @param {number} val
+ * @return {void}
+ */
+MyLinkedList.prototype.addAtHead = function (val) {
+  const newNode = new Node(val);
+  newNode.next = this.head;
+  this.head = newNode;
+};
+
+/**
+ * @param {number} val
+ * @return {void}
+ */
+MyLinkedList.prototype.addAtTail = function (val) {
+  if(this.head === null) {
+      this.addAtHead(val)
+      return
+  }
+  let cur = this.head;
+  while (cur.next !== null) {
+    cur = cur.next;
+  }
+  const newNode = new Node(val);
+  cur.next = newNode;
+};
+
+/**
+ * @param {number} index
+ * @param {number} val
+ * @return {void}
+ */
+MyLinkedList.prototype.addAtIndex = function (index, val) {
+  if (index === 0) {
+    this.addAtHead(val);
+    return
+  }
+
+  if (this.getLength() === index) {
+    this.addAtTail(val);
+    return
+  }
+
+  if (this.getLength() < index) {
+    return;
+  }
+
+  const node = new Node(val);
+
+  let count = 0;
+  let cur = this.head;
+  while (cur !== null) {
+    if (count === index - 1) {
+      const t = cur.next;
+      cur.next = node;
+      node.next = t;
+      return;
+    }
+    cur = cur.next;
+    count++;
+  }
+};
+
+MyLinkedList.prototype.getLength = function () {
+  let count = 0;
+  let cur = this.head;
+  while (cur !== null) {
+    count++;
+    cur = cur.next;
+  }
+  return count;
+};
+
+/**
+ * @param {number} index
+ * @return {void}
+ */
+MyLinkedList.prototype.deleteAtIndex = function (index) {
+  if (index < 0 && this.getLength() <= index) {
+    return;
+  }
+  if (index === 0) {
+    this.head = this.head.next;
+    return;
+  }
+
+  let count = 0;
+  let cur = this.head;
+
+  while (cur !== null) {
+    if (count === index - 1) {
+      cur.next = cur.next === null ? null : cur.next.next;
+      return;
+    }
+    cur = cur.next;
+    count++;
+  }
+};
