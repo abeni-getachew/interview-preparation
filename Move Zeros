@@ -1,0 +1,12 @@
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    const zeroes = []
+    while(nums.includes(0)) { / As long the array still has 0 it will keep running the loop /
+        nums.splice(nums.indexOf(0),1); // indexOf return 1 index at a time
+      	zeroes.push(0) // this will push 0 to the zeroes arr
+    }
+  	nums.push(...zeroes) // using spread operator to add zeroes arr to the end
+};
