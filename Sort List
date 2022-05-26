@@ -1,0 +1,27 @@
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var sortList = function(head) {
+    const arr = [];
+    let node = head;
+    while(node) {
+        arr.push(node.val)
+        node = node.next
+    }
+    arr.sort((a,b) => b - a);
+    let dummy = new ListNode();
+    let current = dummy;
+    while(arr.length) {
+        current.next = new ListNode(arr.pop());
+        current = current.next;
+    }
+    return dummy.next;
+};
