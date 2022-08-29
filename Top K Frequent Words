@@ -1,0 +1,17 @@
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+        frq = {}
+        result = []
+        
+        for i in words:
+            if i in frq:
+                frq[i] +=1
+                
+            else:
+                frq[i] = 1
+                
+           
+        for w in sorted(frq.keys(), key=lambda x: (-frq[x], x))[:k]:
+            result.append(w)
+        
+        return result
