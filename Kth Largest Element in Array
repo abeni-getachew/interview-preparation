@@ -1,0 +1,5 @@
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        taget = sorted(nums, reverse=True,)[:k]
+        
+        return taget[len(taget)-1]
