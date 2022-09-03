@@ -1,0 +1,16 @@
+class Solution:
+    def subarraySum(self, nums: List[int], k: int) -> int:
+        
+        res = 0
+        pre = {0:1}
+        total = 0
+        
+        for n in nums:
+            total += n
+            dif = total - k
+            
+            res += pre.get(dif,0)
+            
+            pre[total] = 1 + pre.get(total, 0)
+            
+        return res    
