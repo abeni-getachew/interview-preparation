@@ -1,0 +1,10 @@
+name = input()
+store = set()
+
+for char in name:
+    store.add(char)
+    
+if len(store) % 2 == 0:
+    print("CHAT WITH HER!")
+else:
+    print("IGNORE HIM!")
