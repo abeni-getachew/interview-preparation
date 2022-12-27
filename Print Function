@@ -1,0 +1,4 @@
+if __name__ == '__main__':
+    n = int(input())
+    for str in range(n):
+        print(str+1, end = "")
