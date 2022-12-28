@@ -1,0 +1,12 @@
+def gradingStudents(grades):
+    # Write your code here
+    res = []
+    for i in grades:
+        l = i + (5 - i)%5
+        if l <= 38:
+            res.append(i)
+        elif (l - i) < 3:
+            res.append(l)
+        elif (l - i) >= 3:
+            res.append(i) 
+    return res
