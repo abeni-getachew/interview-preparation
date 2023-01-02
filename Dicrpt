@@ -1,0 +1,13 @@
+class Solution:
+    def freqAlphabets(self, s: str) -> str:
+        # pad '10#' to avoid the edge case as we may have a case ending with '#' or not ending with '#'
+        new_s = s+"10#"
+        print(new_s)
+        ss = new_s.split('#')
+        print(ss)
+        res = ""
+        for c in ss[:-1]:
+            for this_c in c[:-2]:
+                res += chr(ord('a')+int(this_c)-1)
+            res += chr(ord('a')+int(c[-2:])-1)
+        return res[:-1]
