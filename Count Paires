@@ -1,0 +1,11 @@
+class Solution:
+    def similarPairs(self, words: List[str]) -> int:
+        res = 0
+        count = defaultdict(int)
+
+        for i in words:
+            ans = frozenset(i)
+            res += count[ans]
+            count[ans] += 1
+
+        return res 
