@@ -1,0 +1,28 @@
+class Solution:
+    def findDuplicate(self, paths: List[str]) -> List[List[str]]:
+        """
+        paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)","root 4.txt(efgh)"]
+        =>res = {} NB = dictionary
+        =>path = ["root/a 1.txt(abcd) 2.txt(efgh)]
+        => folder = root/a, name = 1 content = (abcd)
+        => res = {(abcd): [root/a, name, root/a, name]}
+        """
+        res = defaultdict(list)
+        for path in paths:
+            path = path.split(" ")
+            folder = path[0]
+            for l in path[1:]:
+                l = l.split(".txt")
+                name = l[0]
+                content = l[1]
+
+                res[content].append((folder, name))
+        ans = []
+        for k , v in res.items():
+            if len(v) > 1:
+                tmp = []
+                for path, name in v:
+                    tmp.append(path+'/'+name+'.txt')
+                ans.append(tmp)
+        return ans            
+
