@@ -1,0 +1,8 @@
+q = 0
+for i in range(int(input())):
+    a, b, c = map(int, input().split())
+    q += a
+if q == 0:
+   print("YES")
+else:
+   print("NO")
