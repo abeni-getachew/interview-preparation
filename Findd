@@ -1,0 +1,28 @@
+class Solution:
+    def commonChars(self, words: List[str]) -> List[str]:
+        res = []
+        counters = []
+
+        for word in words:
+            cur = defaultdict(int)
+
+            for letter in word:
+                cur[letter] +=1
+            counters.append(cur) 
+        print(counters)    
+        for c in string.ascii_lowercase:
+            ans = float("inf")
+            skip = False
+
+            for count in counters:
+                
+                ct = count[c]
+                if ct == 0:
+                    skip = True
+                    break
+                else:
+                    ans = min(ans, ct)   
+            if not skip:
+                res += [c]* ans
+                print(res)
+        return res                     
