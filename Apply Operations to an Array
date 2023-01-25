@@ -1,0 +1,31 @@
+class Solution:
+    def applyOperations(self, nums: List[int]) -> List[int]:
+        """         l r
+        nums = [1,2,2,1,1,0]
+                        l r
+               [1,4,2,0,0,0]
+                l r
+               [1, 4, 2, 0, 0, 0]
+        l,r = 0, 1
+        """
+        l,r = 0,1
+        while r < len(nums):
+            if nums[l] == nums[r]:
+                nums[l] = nums[l] * 2
+                nums[r] = 0
+                l+=1
+                r+=1
+            else:
+                l+=1
+                r+=1
+        print(nums)            
+
+        x, j = 0,0
+        while j < len(nums):
+            if nums[j]:
+                nums[x], nums[j] = nums[j],nums[x]
+                j+=1
+                x+=1
+            else:
+                j+=1    
+        return nums
