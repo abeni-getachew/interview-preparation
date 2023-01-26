@@ -1,0 +1,15 @@
+class Solution:
+    def sortPeople(self, names: List[str], heights: List[int]) -> List[str]:
+        """
+        [[marry, 180], [john,165], [Emma, 170]]
+        """
+        res = []
+        for i in range(len(heights)):
+            res.append([heights[i],names[i]])
+        res.sort(reverse = True)   
+        print(res)
+
+        ans = [] 
+        for j in res:
+            ans.append(j[1])
+        return ans    
