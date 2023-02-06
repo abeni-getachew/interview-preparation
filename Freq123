@@ -1,0 +1,15 @@
+class Solution:
+    def maxFrequency(self, nums: List[int], k: int) -> int:
+        """    
+        [1,,8,13], k = 5
+        i,j=1,0 i-j+1
+        k=6
+        """
+        j = 0
+        nums.sort() 
+        for i in range(len(nums)):
+            k += nums[i]
+            if k < nums[i] * (i-j+1): 
+                k -= nums[j]
+                j += 1
+        return i - j + 1
