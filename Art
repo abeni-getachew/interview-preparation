@@ -1,0 +1,16 @@
+class Solution:
+    def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
+        def good(left,right):
+            k = list(sorted(nums[left:right+1]))
+            if len(k) == 1:
+                return True
+            diff = k[1] - k[0]
+            for x, y in zip(k, k[1:]):
+                print(x,y)
+                if y - x != diff:
+                    return False
+            return True        
+        res = []
+        for x, y in zip(l,r):
+            res += [good(x,y)]
+        return res  
