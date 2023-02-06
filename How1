@@ -1,0 +1,10 @@
+ temp = sorted(nums)
+        obj = {}
+        ans = []
+
+        for i in range(len(temp)):
+            if temp[i] not in obj:
+                obj[temp[i]] = i
+        for i in range(len(nums)):
+            ans.append(obj[nums[i]])    
+        return ans        
