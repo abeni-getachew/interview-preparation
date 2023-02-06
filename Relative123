@@ -1,0 +1,24 @@
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        obj = {}
+
+        for i in range(len(arr1)):
+            if arr1[i] not in obj:
+                obj[arr1[i]] = 1
+            else:
+                 obj[arr1[i]] +=1
+        diff = []
+
+        for i in arr1:
+            if i not in arr2:
+                diff.append(i)
+
+        diff.sort()
+        
+        ans = []
+        for i in arr2:
+            for j in range(obj[i]):
+                ans.append(i)
+
+        ans.extend(diff)
+        return ans       
