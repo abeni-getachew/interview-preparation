@@ -1,0 +1,9 @@
+n = str(input())
+res = []
+for i in n:
+    if i != "+":
+       res.append(int(i))
+res.sort()
+ 
+x = "+".join(map(str, res))
+print(x)  
