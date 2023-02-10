@@ -1,0 +1,17 @@
+class Solution:
+    def judgeSquareSum(self, c: int) -> bool:
+        """
+        Input: c = 5
+        Output: true
+        """
+        l , r =0, int(c**0.5)+1
+    
+        while l <=r:
+            tmp = l*l + r*r
+            if tmp == c:
+                return True
+            if tmp>c:
+                r-=1
+            else:
+                l+=1
+        return False    
