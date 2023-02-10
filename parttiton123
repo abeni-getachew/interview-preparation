@@ -1,0 +1,20 @@
+class Solution:
+    def partitionLabels(self, s: str) -> List[int]:
+        """
+        s = "ababcbacadefegdehijhklij"
+        """
+        obj = {}
+        end = 0
+        size = 0
+        res = []
+
+        for i,n in enumerate(s):
+            obj[n] = i
+        for j, r in enumerate(s):
+            size +=1
+            end = max(end, obj[r])
+
+            if end == j:
+                res.append(size)
+                size = 0
+        return res       
