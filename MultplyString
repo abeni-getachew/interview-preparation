@@ -1,0 +1,15 @@
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        """
+        num1 = "2", num2 = "3"
+        [2,3] => 6
+        """
+        res = []
+        ab = int(num1)
+        res.append(ab)
+        cd = int(num2)
+        res.append(cd)
+        ans = res[0] * res[1]
+        return str(ans)
+        
+        
