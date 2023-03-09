@@ -1,0 +1,15 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+
+        obj = {}
+        l,res = 0,0
+
+        for i in range(len(s)):
+            obj[s[i]] = 1 + obj.get(s[i], 0)
+
+            while (i-l+1) - max(obj.values()) > k:
+                obj[s[l]] -=1
+                l+=1
+
+            res = max(res, i-l+1)
+        return res   
