@@ -1,0 +1,13 @@
+res = ['+', '-', '*',  '/']
+        stack = []
+
+        for i in tokens:
+            if i in res:
+                num2 = str(stack.pop())
+                num1 = str(stack.pop())
+
+                ans = eval(num1+(i)+num2)
+                stack.append(int(ans))
+            else:
+                stack.append(int(i))
+        return stack[-1] 
