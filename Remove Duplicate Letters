@@ -1,0 +1,8 @@
+idx = {n:i for i,n in enumerate(s)}
+        res = []
+        for i,n in enumerate(s):
+            if n not in res:
+                while res and n < res[-1] and i < idx[res[-1]]:
+                    res.pop()
+                res.append(n)
+        return "".join(res) 
