@@ -1,0 +1,11 @@
+class Solution:
+    def timeRequiredToBuy(self, tickets: List[int], k: int) -> int:
+        res = 0
+        for idx, n in enumerate(tickets):
+            if idx <= k:
+                res += min(n, tickets[k])
+            else:
+                res += min(n, tickets[k] - 1)
+
+
+        return res
