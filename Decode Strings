@@ -1,0 +1,25 @@
+class Solution:
+    def decodeString(self, s: str) -> str:
+        """
+        s = "3[a]2[bc]"
+        [aaabcbc]
+        "aaabcbc"
+        res = a
+        val=3 
+        """
+        stack = []
+
+        for i in s:
+            if i != "]":
+                stack.append(i)
+            else:
+                res = ""
+                while stack and stack[-1] != "[":
+                    res = stack.pop() + res
+                stack.pop()
+                idx = ""
+                while stack and stack[-1].isdigit():
+                    idx = stack.pop() + idx
+                stack.append(int(idx)*res)
+
+        return "".join(stack)                
