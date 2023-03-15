@@ -1,0 +1,14 @@
+class Solution:
+    def PredictTheWinner(self, nums: List[int]) -> bool:
+        """
+        nums = [1,5,2]
+        n= 3
+        l,r = 0, n-1
+        """
+        n = len(nums)
+        def help(l,r):
+            if l == r:
+                return nums[l]
+            return max(nums[l] - help(l+1,r), nums[r] - help(l, r-1))
+            
+        return help(0, n-1) >=0      
